@@ -13,11 +13,11 @@
 
 return [
     "development" => [
-        "database_host" => "",
-        "database_user" => "",
-        "database_pass" => "",
-        "dabatase_name" => "",
-        "database_auto_init" => false,
+        "db_host" => "localhost",
+        "db_user" => "root",
+        "db_pass" => "",
+        "db_name" => "loufok",
+        "database_auto_init" => true,
 
         "session_name" => "session",
         "session_encrypt_method" => "aes-256-cbc",
@@ -30,7 +30,7 @@ return [
         "email_port" => "",
         "email_from" => "",
 
-        "system_default_time_zone" => "Europe/Madrid",
+        "system_default_time_zone" => "Europe/Paris",
         "system_debug_console" => true,
         "system_execution_time" => microtime(true),
         "system_cache_version" => 0001, // Refresh frontend cache
@@ -63,8 +63,8 @@ return [
         "email_port" => "",
         "email_from" => "",
 
-        "system_default_time_zone" => "Europe/Madrid",
-        "system_debug_console" => true,
+        "system_default_time_zone" => "Europe/Paris",
+        "system_debug_console" => false,
         "system_execution_time" => microtime(true),
         "system_cache_version" => 0001, // Refresh frontend cache
         "system_allow_forms_without_csrf" => false,
