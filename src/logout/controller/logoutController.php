@@ -10,6 +10,6 @@ class LogoutController extends Base
     public function logout(): void
     {
         session_destroy();
-        header("Location : /");
+        header("Location: /login");
     }
 }

@@ -35,8 +35,7 @@ foreach ($this->output_scripts as $script_file) {
         <span style="position: absolute;top: 35px;">Header: src/view/template/common/Header.php</span>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="black-text" href="index.php?route=product/product/samplePage">Sample</a></li>
-            <li><a class="black-text" href="index.php?route=product/product/sample">Not found page</a></li>
+            <li><a class="black-text" href="/logout">Se déconnecter</a></li>
         </ul>
     </div>
 </nav>
