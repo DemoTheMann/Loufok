@@ -46,10 +46,10 @@ return [
     ],
 
     "production" => [
-        "database_host" => "",
-        "database_user" => "",
-        "database_pass" => "",
-        "dabatase_name" => "",
+        "database_host" => "mysql-jbienvenu.alwaysdata.net",
+        "database_user" => "jbienvenu",
+        "database_pass" => "L33tH4mm3r3dBr0z%%%",
+        "dabatase_name" => "jbienvenu_loufok",
         "database_auto_init" => true,
 
         "session_name" => "session",
