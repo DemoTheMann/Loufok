@@ -27,7 +27,6 @@ class ContribuerController extends Base
         if($status){
 
             $cadavre = $contribuer_model->getCadavre();
-            $contributions = $contribuer_model->getAllContribByCadavreId($cadavre['id_cadavre']);
             $rand_contrib = $contribuer_model->getRandContrib($user_id);
             $html = "";
 
@@ -49,11 +48,15 @@ class ContribuerController extends Base
 
                 if($user_contrib){
                     $contribuer_model->updateContribByJoueur($user_id, $new_contrib_txt);
+                    header("Location: /contribuer");
                 } else {
                     $contribuer_model->newContrib($cadavre['id_cadavre'], $user_id, $new_contrib_txt);
                     $user_contrib = $contribuer_model->getContribByIdJoueur($user_id);
+                    
                 }
             }
+
+            
             
             if($nb_contrib >= $cadavre['nb_contributions']){
 
@@ -75,14 +78,26 @@ class ContribuerController extends Base
                         <h5>Poursuivez cette histoire en 280 charactères maximum.<h5>
                     </div>
                     ";
-                $form =
+
+                if($user_contrib === false){
+                    $form =
                     "
+                    <form action='' method='POST'>
+                        <label for='contrib'>Votre contribution à l'histoire</label>
+                        <textarea name='contrib' id='contrib' minlength='50' maxlength='280' required></textarea>
+                        <button type='submit'>Enregistrer votre contribution</button>
+                    </form>
+                    ";
+                } else {
+                    $form =
+                     "
                     <form action='' method='POST'>
                         <label for='contrib'>Votre contribution à l'histoire</label>
                         <textarea name='contrib' id='contrib' minlength='50' maxlength='280' required>". $user_contrib['txt_contribution'] ."</textarea>
                         <button type='submit'>Enregistrer votre contribution</button>
                     </form>
                     ";
+                    }
             }
     
             
@@ -92,8 +107,7 @@ class ContribuerController extends Base
                 "form" => $form,
             ];
         }
-
+        
         $this->output->load("contribuer/contribuer", $data);
-
     }
 }

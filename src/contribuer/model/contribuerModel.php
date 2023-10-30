@@ -42,19 +42,19 @@ class ContribuerModel extends Base
         return $this->database->query("SELECT * FROM `contribution` WHERE id_joueur = :id_joueur", array(":id_joueur" => $id_joueur)); 
     }
 
-    public function getContribIdByOrder(int $order): array
+    public function getContribByOrder(int $order)
     {
-        return $this->database->query("SELECT id_contribution FROM `contribution` WHERE ordre_contribution = :order", array(":order" => $order)); 
+        return $this->database->query("SELECT * FROM `contribution` WHERE ordre_contribution = :order", array(":order" => $order)); 
     }
 
-    public function getAllContribByCadavreId(int $cad_id): array 
+    public function getAllContribIdByCadavreId(int $cad_id): array 
     {
-        return $this->database->query("SELECT * FROM `contribution` WHERE id_cadavre = :id", array(":id" => $cad_id)); 
+        return $this->database->query("SELECT id_contribution FROM `contribution` WHERE id_cadavre = :id", array(":id" => $cad_id)); 
     }
 
     public function countContrib(int $cad_id): int 
     {
-        return count($this->getAllContribByCadavreId($cad_id));
+        return count($this->getAllContribIdByCadavreId($cad_id));
     }
 
     public function newContrib(int $id_cadavre, int $id_joueur, string $txt_contribution): void
@@ -103,10 +103,10 @@ class ContribuerModel extends Base
     {
         $nb_contrib = $this->countContrib($cad_id);
         $contrib_order = rand(1,$nb_contrib);
-        $contrib_id = $this->getContribIdByOrder($contrib_order);
+        $contrib_id = $this->getContribByOrder($contrib_order)['id_contribution'];
         $this->database->query("INSERT INTO `rand_contribution`(id_cadavre, id_joueur, id_contribution)
                                 VALUES (:id_cadavre, :id_joueur, :id_contribution)",
-                                array(":id_cadavre" => $cad_id, ":id_joueur" => $user_id, ":id_contribution" => $contrib_id['id_contribution']));
+                                array(":id_cadavre" => $cad_id, ":id_joueur" => $user_id, ":id_contribution" => $contrib_id));
     }
 
 }

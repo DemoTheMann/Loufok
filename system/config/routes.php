@@ -8,9 +8,12 @@
 return [
     "/" => "login/login/loginPage",
     "/login" => "login/login/loginPage",
+    "/contribuer" => "contribuer/contribuer/contribuerPage",
     "/admin" => "admin/admin/adminPage",
+    "/cadavre" => "cadavre/cadavre/cadavrePage",
+
     "/welcome" => "welcome/welcome/index",
     "/product" => "product/product/samplePage",
-    "/contribuer" => "contribuer/contribuer/contribuerPage",
+    
     "/logout" => "logout/logout/logout"
 ];
