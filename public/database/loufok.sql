@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nom_admin`, `mail_admin`, `mdp_admin`) VALUES
 (3, 'Jean', 'jean@mail.fr', '1234'),
-(4, 'Hubert', 'huber@mail.fr', '1234');
+(4, 'Hubert', 'hubert@mail.fr', '1234');
 
 -- --------------------------------------------------------
 
