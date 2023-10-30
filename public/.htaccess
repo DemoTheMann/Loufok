@@ -3,8 +3,3 @@
 <Files *.*>
 	allow from all
 </Files>
-
-<Files *.php>
-	order allow,deny
-	deny from all
-</Files>
