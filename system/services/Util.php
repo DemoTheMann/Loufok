@@ -115,18 +115,19 @@ class Util
     /**
      * Checks wether the CSRF token used in the POST form, matches with the CSRF token stored in the session
      */
-    public function checkPostCSRFToken(): void
-    {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            if (isset($_POST["csrf_token"])) {
-                if (!hash_equals(Session::get("csrf_token"), $_POST["csrf_token"])) {
-                    throw new \Exception('The CSRF token doesn\'t match!');
-                }
-            } else {
-                throw new \Exception('The CSRF token was not defined');
-            }
-        }
-    }
+    
+    // public function checkPostCSRFToken(): void
+    // {
+    //     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //         if (isset($_POST["csrf_token"])) {
+    //             if (!hash_equals(Session::get("csrf_token"), $_POST["csrf_token"])) {
+    //                 throw new \Exception('The CSRF token doesn\'t match!');
+    //             }
+    //         } else {
+    //             throw new \Exception('The CSRF token was not defined');
+    //         }
+    //     }
+    // }
 
     /**
      * This function acts exactly like array_walk_recursive, except that it pretends that the function

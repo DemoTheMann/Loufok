@@ -51,7 +51,7 @@ $session_handler = new SecureSession($config->get("session_iv"), $config->get("s
 
 $session = new Session($session_handler, $config->get("session_name"));
 
-$database = new Database(false, $config->get("db_host"), $config->get("db_user"), $config->get("db_name"), $config->get("db_pass"), $console);
+$database = new Database($config->get("db_host"), $config->get("db_user"), $config->get("db_name"), $config->get("db_pass"), $console);
 
 // Init database
 if ($config->get('database_auto_init')) {
@@ -67,14 +67,14 @@ if (!$session->isValid()) {
 }
 
 // CSRF token (forms security)
-if ($session->get("csrf_token") === null) {
-    $session->set("csrf_token", $util->generateCSRFToken());
-    $session->set("CSRF_input", "<input type='text' name='csrf_token' hidden value='" . $session->get("csrf_token") . "' />");
-}
+// if ($session->get("csrf_token") === null) {
+//     $session->set("csrf_token", $util->generateCSRFToken());
+//     $session->set("CSRF_input", "<input type='text' name='csrf_token' hidden value='" . $session->get("csrf_token") . "' />");
+// }
 
-if (!$config->get("allow_forms_without_csrf_input")) {
-    $util->checkPostCSRFToken();
-}
+// if (!$config->get("allow_forms_without_csrf_input")) {
+//     $util->checkPostCSRFToken();
+// }
 
 // Error handler
 set_error_handler(array($logger,"myErrorHandler"), E_ALL);

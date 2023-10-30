@@ -6,7 +6,10 @@
  */
 
 return [
-    "/" => "welcome/welcome/index",
-    "/welcome" => "welcome/welcome/index",
-    "/product" => "product/product/samplePage"
+    "/" => "login/login/loginPage",
+    "/login" => "login/login/loginPage",
+    "/contribuer" => "contribuer/contribuer/contribuerPage",
+    "/admin" => "admin/admin/adminPage",
+    "/cadavre" => "cadavre/cadavre/cadavrePage",
+    "/logout" => "logout/logout/logout"
 ];

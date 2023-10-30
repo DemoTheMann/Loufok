@@ -8,3 +8,6 @@
 
 # logs
 /system/logs/*
+
+# Jobs
+/.github/workflows/*

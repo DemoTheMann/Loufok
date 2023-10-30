@@ -85,6 +85,7 @@ class Database
 
             $this->_connection = $temp_connection;
         } catch (\Throwable $th) {
+            die(var_dump($th));
             $this->_console->addDebugInfo("Error loading database");
         }
     }
