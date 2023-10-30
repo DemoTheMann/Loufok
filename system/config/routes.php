@@ -11,9 +11,5 @@ return [
     "/contribuer" => "contribuer/contribuer/contribuerPage",
     "/admin" => "admin/admin/adminPage",
     "/cadavre" => "cadavre/cadavre/cadavrePage",
-
-    "/welcome" => "welcome/welcome/index",
-    "/product" => "product/product/samplePage",
-    
     "/logout" => "logout/logout/logout"
 ];
