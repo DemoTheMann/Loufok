@@ -9,7 +9,7 @@ class LoginController extends Base
 
     public function loginPage(): void
     {
-        $this->console->addDebugInfo($_SESSION);
+
         if($_SERVER['REQUEST_METHOD'] === "POST"){
 
             $login_model = new LoginModel();
@@ -24,11 +24,14 @@ class LoginController extends Base
                 }
             }
 
-            if($_SESSION['auth'] === true){
-                $data = [
-                    "nom_plume" => $_SESSION['username'],
-                ];
-                $this->output->load("login/loggedIn", $data);
+            if(isset($_SESSION['auth'])){
+                if($_SESSION['auth'] === true){
+                    $data = [
+                        "nom_plume" => $_SESSION['username'],
+                    ];
+                    $this->output->load("login/loggedIn", $data);
+                }
+                
             } else {
                 $this->output->load('login/loginError');
             }
@@ -36,12 +39,13 @@ class LoginController extends Base
 
         } else {
 
-            if($_SESSION['auth'] === true){
-
-                $data = [
-                    "nom_plume" => $_SESSION['username'],
-                ];
-                $this->output->load("login/loggedIn", $data);
+            if(isset($_SESSION['auth'])){
+                if($_SESSION['auth'] === true){
+                    $data = [
+                        "nom_plume" => $_SESSION['username'],
+                    ];
+                    $this->output->load("login/loggedIn", $data);
+                }
 
             } else {
                 $this->output->load('login/login');

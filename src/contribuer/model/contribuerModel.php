@@ -14,7 +14,7 @@ class ContribuerModel extends Base
 
     public function getCadavreId()
     {
-        $this->database->query("SELECT id_cadavre FROM `cadavre`");
+        return $this->database->query("SELECT id_cadavre FROM `cadavre`");
     }
 
     public function isCadavreOn()
@@ -26,9 +26,20 @@ class ContribuerModel extends Base
         // }
     }
 
+
+
+
     public function getAllContrib(): array
     {
         return $this->database->query("SELECT * FROM `contribution`");
+    }
+
+    public function getContribById(int $id_contrib): array {
+        return $this->database->query("SELECT * FROM `contribution` WHERE id_contribution = :id_contrib", array(":id_contrib" => $id_contrib)); 
+    }
+
+    public function getContribByIdJoueur(int $id_joueur){
+        return $this->database->query("SELECT * FROM `contribution` WHERE id_joueur = :id_joueur", array(":id_joueur" => $id_joueur)); 
     }
 
     public function getContribIdByOrder(int $order): array
@@ -45,6 +56,38 @@ class ContribuerModel extends Base
     {
         return count($this->getAllContribByCadavreId($cad_id));
     }
+
+    public function newContrib(int $id_cadavre, int $id_joueur, string $txt_contribution): void
+    {
+
+        $ordre_contribution = $this->countContrib($id_cadavre)+1;
+        $id_admin = null;
+
+        $this->database->query("INSERT INTO `contribution`(id_admin, id_cadavre, id_joueur, txt_contribution, ordre_contribution)
+                                VALUES (:id_admin, :id_cadavre, :id_joueur, :txt_contribution, :ordre_contribution)",
+                                array(
+                                    "id_admin" => $id_admin,
+                                    ":id_cadavre" => $id_cadavre,
+                                    ":id_joueur" => $id_joueur,
+                                    ":txt_contribution" => $txt_contribution,
+                                    "ordre_contribution" => $ordre_contribution,
+                                ));
+    }
+
+    public function updateContribByJoueur(int $id_joueur, $txt_contribution): void 
+    {
+        $this->database->query("UPDATE `contribution`
+                                SET txt_contribution = :txt_contribution
+                                WHERE id_joueur = :id_joueur",
+                                array(
+                                    ":txt_contribution" => $txt_contribution,
+                                    "id_joueur" => $id_joueur,
+                                ));
+    }
+
+
+
+
 
     public function getAllRandomContrib(): array
     {

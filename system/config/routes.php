@@ -8,6 +8,7 @@
 return [
     "/" => "login/login/loginPage",
     "/login" => "login/login/loginPage",
+    "/admin" => "admin/admin/adminPage",
     "/welcome" => "welcome/welcome/index",
     "/product" => "product/product/samplePage",
     "/contribuer" => "contribuer/contribuer/contribuerPage",

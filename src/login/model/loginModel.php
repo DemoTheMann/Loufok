@@ -14,7 +14,7 @@ class LoginModel extends Base
 
     public function getUserById(int $user_id): array
     {
-        return $this->database->query("SELECT * FROM `joueur` WHERE id = :user_id", array(":user_id" => $user_id));
+        return $this->database->query("SELECT * FROM `joueur` WHERE id_joueur = :user_id", array(":user_id" => $user_id));
     }
 
 }
